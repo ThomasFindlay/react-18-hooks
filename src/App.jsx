@@ -10,9 +10,9 @@ function App() {
     <div className="App space-y-16">
       <UseIdExample />
       <UseDeferredValueExample />
-      <UseTransitionExample />
+      {/* <UseTransitionExample />
       <UseSyncExternalStoreExample />
-      <UseInsertionEffectExample />
+      <UseInsertionEffectExample /> */}
     </div>
   );
 }
