@@ -14,6 +14,11 @@ const useCountStore = createStore(set => {
         state.count += 1;
       });
     },
+    divide: () => {
+      set(state => {
+        state.count /= 2;
+      });
+    },
     multiply: () => {
       set(state => {
         state.count *= 2;
@@ -39,7 +44,7 @@ const UseSyncExternalStoreExample = props => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">UseSyncExternalStore Example</h2>
+      <h2 className="text-xl font-bold mb-4">useSyncExternalStore Example</h2>
 
       <div>Count: {countStore.count}</div>
       <div>Multiplied Count: {multipliedCount}</div>
@@ -55,6 +60,12 @@ const UseSyncExternalStoreExample = props => {
           onClick={countStore.increment}
         >
           Increment
+        </button>
+        <button
+          className="bg-sky-700 text-sky-100 px-4 py-3"
+          onClick={countStore.divide}
+        >
+          Divide
         </button>
         <button
           className="bg-sky-700 text-sky-100 px-4 py-3"

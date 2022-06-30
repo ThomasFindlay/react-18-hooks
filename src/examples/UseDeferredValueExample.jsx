@@ -35,7 +35,7 @@ const Meals = memo(props => {
   return (
     <>
       {Array.isArray(meals) ? (
-        <ul className="mt-3 space-y-2">
+        <ul className="mt-3 space-y-2 max-h-[30rem] overflow-auto">
           {meals.map(meal => {
             const { idMeal, strMeal } = meal;
             return <li key={idMeal}>{strMeal}</li>;

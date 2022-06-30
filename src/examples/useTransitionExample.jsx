@@ -1,7 +1,7 @@
 import {
   memo,
   Suspense,
-  useDeferredValue,
+  useTransition,
   useEffect,
   useRef,
   useState,
@@ -9,8 +9,9 @@ import {
 
 const Meals = memo(props => {
   const { query } = props;
-  const abortControllerRef = useRef(null);
   const [meals, setMeals] = useState([]);
+  const abortControllerRef = useRef(null);
+  const [isPending, startTransition] = useTransition();
 
   const searchMeals = async query => {
     abortControllerRef.current?.abort();
@@ -23,9 +24,9 @@ const Meals = memo(props => {
       }
     );
     const data = await response.json();
-    // startTransition(() => {
-    setMeals(data.meals || []);
-    // });
+    startTransition(() => {
+      setMeals(data.meals || []);
+    });
   };
 
   useEffect(() => {
@@ -34,8 +35,9 @@ const Meals = memo(props => {
 
   return (
     <>
+      {isPending ? <p>Loading...</p> : null}
       {Array.isArray(meals) ? (
-        <ul className="mt-3 space-y-2">
+        <ul className="mt-3 space-y-2 max-h-[30rem] overflow-auto">
           {meals.map(meal => {
             const { idMeal, strMeal } = meal;
             return <li key={idMeal}>{strMeal}</li>;
@@ -48,11 +50,10 @@ const Meals = memo(props => {
 
 const UseTransitionExample = props => {
   const [query, setQuery] = useState("");
-  const deferredQuery = useDeferredValue(query);
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">useDeferredValue Example</h2>
+      <h2 className="text-xl font-bold mb-4">useTransition Example</h2>
       <div>
         <div>
           <label htmlFor="mealQuery" className="mb-1 block">
@@ -69,7 +70,7 @@ const UseTransitionExample = props => {
         />
       </div>
       <Suspense fallback="Loading results...">
-        <Meals query={deferredQuery} />
+        <Meals query={query} />
       </Suspense>
     </div>
   );
