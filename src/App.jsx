@@ -1,7 +1,7 @@
 import "./App.css";
+import UseIdExample from "./examples/UseIdExample";
 import UseDeferredValueExample from "./examples/UseDeferredValueExample";
-import UseIdExample from "./examples/useId";
-import UseInsertionEffectExample from "./examples/useInsertionEffect";
+import UseInsertionEffectExample from "./examples/UseInsertionEffectExample";
 import UseSyncExternalStoreExample from "./examples/UseSyncExternalStoreExample";
 import UseTransitionExample from "./examples/useTransitionExample";
 
@@ -10,9 +10,9 @@ function App() {
     <div className="App space-y-16">
       <UseIdExample />
       <UseDeferredValueExample />
-      <UseTransitionExample />
+      {/* <UseTransitionExample />
       <UseSyncExternalStoreExample />
-      <UseInsertionEffectExample />
+      <UseInsertionEffectExample /> */}
     </div>
   );
 }
