@@ -23,13 +23,15 @@ const Meals = memo(props => {
       }
     );
     const data = await response.json();
-    // startTransition(() => {
     setMeals(data.meals || []);
-    // });
   };
 
   useEffect(() => {
     searchMeals(query);
+
+    return () => {
+      abortControllerRef.current?.abort();
+    };
   }, [query]);
 
   return (
