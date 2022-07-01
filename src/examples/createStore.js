@@ -3,7 +3,6 @@ import produce from "immer";
 
 export const createStore = createStateFn => {
   // Create a new copy of the state object
-  // let state = produce(initialState, draft => draft);
   let state = {};
 
   // Listeners Set to store all store subscribers
