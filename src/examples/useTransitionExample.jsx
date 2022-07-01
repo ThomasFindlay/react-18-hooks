@@ -31,6 +31,9 @@ const Meals = memo(props => {
 
   useEffect(() => {
     searchMeals(query);
+    return () => {
+      abortControllerRef.current?.abort();
+    };
   }, [query]);
 
   return (
