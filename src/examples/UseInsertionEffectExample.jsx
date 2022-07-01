@@ -3,6 +3,11 @@ import { useStyles } from "./useStyles";
 
 const styles = props => {
   return {
+    buttonsContainer: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "1rem",
+    },
     button: {
       backgroundColor: "#9333ea",
       color: "#faf5ff",
@@ -21,7 +26,7 @@ const UseInsertionEffectExample = props => {
       <h2 className="text-xl font-bold mb-4">useInsertionEffect Example</h2>
 
       <div>
-        <div className="flex flex-col gap-4">
+        <div className={style.buttonsContainer}>
           <button
             className={style.button}
             onClick={() => setWidth(width => width - 5)}

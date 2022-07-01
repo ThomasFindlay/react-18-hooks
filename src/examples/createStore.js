@@ -37,6 +37,7 @@ export const createStore = createStateFn => {
 
   useStore.subscribe = subscribe;
 
+  // Update the state with the initial
   state = createStateFn(setState, getState);
 
   return useStore;
